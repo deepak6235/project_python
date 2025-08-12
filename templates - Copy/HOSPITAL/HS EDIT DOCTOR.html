@@ -1,0 +1,97 @@
+
+{% extends 'HOSPITAL/hospital_data_view_temp.html' %}
+{% block body %}
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Untitled Document</title>
+</head>
+
+<body>
+<form action="/editdoctor" method="post" enctype="multipart/form-data" name="form1" id="form1">
+ 
+  <div align="center">ADD DOCTOR
+  </div>
+<table class="table table-bordered table-striped">
+    <tr>
+      <td width="334"><div align="center">NAME</div></td>
+      <td width="465"><div align="center">
+        <input type="text" name="textfield"  value="{{ i.name }}"/>
+      </div></td>
+    </tr>
+    <tr>
+      <td><div align="center">EMAIL</div></td>
+      <td><div align="center">
+        <input type="text" name="textfield2" value="{{ i.email   }}"/>
+      </div></td>
+    </tr>
+
+   <tr>
+      <td><div align="center">IMAGE</div></td>
+      <td><div align="center">
+        <input type="file" name="file1" />
+
+     <img src="{{ i.image.url }}" width="100" height="100"> </div></td></tr>
+
+
+    <tr>
+      <td><div align="center">PHONE</div></td>
+      <td><div align="center">
+        <input type="text" name="textfield4" value="{{ i.phone }}" />
+      </div></td>
+    </tr>
+
+  <tr>
+    <td><div align="center">DEPARTMENT</div></td>
+    <td>
+        <select name="textfield5" id="{{ i.department }}">
+            <option value="ENT" {% if i.department == "ENT" %}selected{% endif %}>ENT</option>
+            <option value="Brain" {% if i.department == "Brain" %}selected{% endif %}>Brain</option>
+            <option value="Ortho" {% if i.department == "Ortho" %}selected{% endif %}>Ortho</option>
+            <option value="Lungs" {% if i.department == "Lungs" %}selected{% endif %}>Lungs</option>
+            <option value="Kidney" {% if i.department == "Kidney" %}selected{% endif %}>Kidney</option>
+        </select>
+    </td>
+</tr>
+
+
+{#    <tr>#}
+{#      <td><div align="center">DEPARTMENT</div></td>#}
+{#      <td><select name="textfield5" id="{{ i.department }}">#}
+{#          <option name="textfield5">ENT</option>#}
+{#          <option name="textfield5">Brain</option>#}
+{#          <option name="textfield5">Ortho</option>#}
+{#          <option name="textfield5">Lungs</option>#}
+{#          <option name="textfield5">Kidney</option>#}
+{#      </select>#}
+{#        </td>#}
+{#    </tr>#}
+    <tr>
+      <td><div align="center">QUALIFICATION</div></td>
+      <td><div align="center">
+        <input type="text" name="textfield6" value="{{ i.qualification }}" />
+      </div></td>
+    </tr>
+    <tr>
+      <td><div align="center">EXPERIENCE</div></td>
+      <td><div align="center">
+        <input type="text" name="textfield7" value="{{ i.experience }}" />
+      </div></td>
+    </tr>
+
+    <tr>
+      <td colspan="2"><div align="center">
+        <input type="submit" name="Submit"  value="UPDATE"  />
+      </div></td>
+    </tr>
+
+  </table> 
+</form>
+
+</body>
+</html>
+
+{% endblock %}
+

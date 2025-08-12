@@ -1,0 +1,74 @@
+
+
+{% extends 'admin/admin_data_view_temp.html'%}
+{% block body %}
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <title>Hospital Requests</title>
+  <!-- Include Bootstrap (ensure Bootstrap is included in the base template or link here) -->
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+  <div class="container mt-5">
+    <!-- Page Heading -->
+    <div class="row">
+      <div class="col-12 text-center">
+        <h2 class="mb-4">Hospital Requests</h2>
+{#        <p class="text-muted">Here you can accept or reject requests for new hospitals.</p>#}
+      </div>
+    </div>
+
+    <!-- Table of Requests -->
+    <div class="table-responsive">
+      <table class="table table-bordered table-striped">
+        <thead class="thead-dark">
+          <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Website</th>
+            <th>Contact No</th>
+            <th>Place</th>
+            <th>PIN</th>
+            <th>Post</th>
+            <th>Latitude</th>
+            <th>Longitude</th>
+            <th colspan="2" class="text-center">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for i in data %}
+          <tr>
+            <td>{{ i.name }}</td>
+            <td>{{ i.email }}</td>
+            <td><a href="https://{{ i.website}}" target="_blank" rel="noopener noreferrer">{{ i.website }}</a></td>
+            <td>{{ i.contactno }}</td>
+            <td>{{ i.place }}</td>
+            <td>{{ i.pin }}</td>
+            <td>{{ i.post }}</td>
+            <td>{{ i.latitude }}</td>
+            <td>{{ i.longitude }}</td>
+            <td class="text-center">
+              <a href="admin_accept_hsptl/{{ i.LOGIN.id }}" class="btn btn-success btn-sm">Accept</a>
+
+
+              <a href="admin_reject_hs/{{ i.LOGIN.id }}" class="btn btn-danger btn-sm">Reject</a>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Optionally, include the Bootstrap JS for interactivity (modals, dropdowns, etc.) -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>
+
+{% endblock %}

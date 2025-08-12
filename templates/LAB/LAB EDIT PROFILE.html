@@ -1,0 +1,92 @@
+{% extends 'LAB/labindex.html' %}
+{% block body %}
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Untitled Document</title>
+</head>
+
+<body>
+<p align="center">EDIT PROFILE</p>
+<form id="form1" name="form1" method="post" action="lab_editprof">
+<input type="hidden" name="id" value="{{ i.id }}">
+  <div align="center">
+    <div align="center">
+      <table class="table table-bordered table-striped">
+        <tr>
+          <td><div align="center">NAME</div></td>
+          <td><div align="center">
+              <input type="text" name="textfield" value="{{ i.name }}" />
+          </div></td>
+        </tr>
+          <tr>
+      <td><div align="center">EMAIL</div></td>
+      <td><div align="center">
+        <input type="text" name="textfield2" value="{{ i.email }}"/>
+      </div></td>
+    </tr>
+
+
+      <td><div align="center">PHONE</div></td>
+      <td><div align="center">
+        <input type="text" name="textfield4" value="{{ i.contactno }}"/>
+      </div></td>
+    </tr>
+          <tr>
+      <td><div align="center">WEBSITE</div></td>
+      <td><div align="center">
+        <input type="text" name="textfield7" value="{{ i.website }}" readonly/>
+      </div></td>
+    </tr>
+          <tr>
+      <td><div align="center">PLACE</div></td>
+      <td><div align="center">
+        <input type="text" name="textfield8" value="{{ i.place }}" readonly/>
+      </div></td>
+    </tr>
+          <tr>
+      <td><div align="center">PIN</div></td>
+      <td><div align="center">
+        <input type="text" name="textfield9" value="{{ i.pin }}" readonly/>
+      </div></td>
+    </tr>
+          <tr>
+      <td><div align="center">POST</div></td>
+      <td><div align="center">
+        <input type="text" name="textfield10" value="{{ i.post }}" readonly/>
+      </div></td>
+    </tr>
+          <tr>
+      <td><div align="center">LANGITUDE</div></td>
+      <td><div align="center">
+        <input type="text" name="textfield11" value="{{ i.latitude }}" readonly/>
+      </div></td>
+    </tr>
+ <tr>
+      <td><div align="center">LONGITUDE</div></td>
+      <td><div align="center">
+        <input type="text" name="textfield12" value="{{ i.longitude }}" readonly/>
+      </div></td>
+    </tr>
+
+
+           <tr>
+      <td colspan="2"><div align="center">
+        <input type="submit" name="Submit"  value="UPDATE"  />
+      </div></td>
+    </tr>
+
+      </table>
+    </div>
+    <p></p>
+  </div>
+</form>
+<div align="center"></div>
+</body>
+</html>
+
+{% endblock %}

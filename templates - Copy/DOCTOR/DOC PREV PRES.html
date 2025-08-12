@@ -1,0 +1,48 @@
+{% extends 'DOCTOR/doctorindex.html' %}
+{% block body %}
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Untitled Document</title>
+</head>
+
+<body>
+<form id="form1" name="form1" method="post" action="">
+    <p align="center" ><h4 align="center"><b>SCHEDULE</b></h4></p><br>
+  <table class="table table-bordered table-striped" bgcolor="white">
+    <tr>
+      <td>DATE</td>
+      <td>Medicine</td>
+      <td>Quantity</td>
+      <td>Days</td>
+      <td>Morning</td>
+      <td>Afternoon</td>
+      <td>Night</td>
+
+    </tr>
+
+     {% for i in data %}
+    <tr>
+      <td>{{ i.date}}</td>
+      <td>{{ i.prescription }}</td>
+      <td>{{ i.quantity }}</td>
+      <td>{{ i.days }}</td>
+      <td>{{ i.morning }}</td>
+      <td>{{ i.afternoon }}</td>
+      <td>{{ i.night }}</td>
+     
+    </tr>
+
+    {% endfor %}
+
+
+  </table>
+  <p>&nbsp;  </p>
+</form>
+</body>
+</html>
+{% endblock %}

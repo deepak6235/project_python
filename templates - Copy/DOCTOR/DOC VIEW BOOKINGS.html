@@ -1,0 +1,240 @@
+{% extends 'DOCTOR/doctorindex.html' %}
+{% block body %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bookings</title>
+    <!-- Include Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+     <body>
+  <div class="container-fluid">
+  <!-- Page Heading -->
+  <div class="text-center mb-3">
+    <h2>Bookings</h2>
+  </div>
+
+  <style>
+    @media (prefers-color-scheme: dark) {
+      h2 {
+        color: #fff;
+      }
+    }
+
+    .bg-cr {
+  background: transparent;
+
+        backdrop-filter: blur(5px);
+
+}
+
+
+
+
+
+
+
+ .table-responsive {
+      max-height: 75vh;
+      overflow-y: auto;
+    }
+
+    .form-row {
+      gap: 10px;
+    }
+
+    .blurred {
+      filter: blur(5px);
+      transition: filter 0.3s ease-in-out;
+    }
+
+
+  </style>
+
+
+{#  </form>#}
+
+<div class="form-row justify-content-center mb-4">
+      <div class="col-md-10">
+        <input type="text" id="searchInput" placeholder="Search by Patient Name " class="form-control" onkeyup="filterTable()" />
+      </div><div class="col-auto">
+        <button type="button" class="btn btn-info" data-toggle="modal" data-target="#viewRequestsModal">
+          Past Bookings
+        </button>
+      </div>
+    </div>
+
+
+
+
+
+
+
+
+
+  <!-- Table of Accepted Hospitals and Doctors -->
+<div class="table">
+      <table class="table table-bordered table-striped" >
+        <thead class="thead-dark">
+            <tr>
+                <th>No.</th>
+                <th>Patient</th>
+                <th>Date</th>
+                <th>From Time</th>
+                <th>To Time</th>
+                <th>Add Prescription</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% if data %}
+            {% for i in data %}
+            <tr>
+                <td>{{ forloop.counter }}</td>
+                <td>{{ i.USER.name }}</td>
+                <td>{{ i.SCHEDULE.date }}</td>
+                <td>{{ i.SCHEDULE.fromtime }}</td>
+                <td>{{ i.SCHEDULE.totime }}</td>
+                <td>
+                    <div align="center">
+                        <a href="/doc_add_prescription/{{ i.id }}" class="btn btn-success btn-sm">Add</a>
+                    </div>
+                </td>
+            </tr>
+            {% endfor %}
+            {% else %}
+            <tr>
+                <td colspan="6" class="text-center">
+                    <h5><b>No Bookings Today</b></h5>
+                </td>
+            </tr>
+            {% endif %}
+            <tr id="noResultMessage" style="display: none;">
+              <td colspan="11" class="text-center"><h5>No Patient    Found</h5></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+
+
+  <!-- Modal -->
+
+{#  <div class="modal fade bg-color-white" id="viewRequestsModal" tabindex="-1" aria-labelledby="viewRequestsModalLabel"     >#}
+  <div class="modal fade bg-cr"   id="viewRequestsModal" tabindex="-1" aria-labelledby="viewRequestsModalLabel" aria-hidden="false" data-backdrop="false" >
+
+  <div class="modal-dialog modal-lg modal-dialog-centered"   style="max-width: 85%;" >  <!-- Increased width to 90% -->
+
+
+      <div class="modal-content "   >
+      <div class="modal-header">
+        <h5 class="modal-title" id="viewRequestsModalLabel">Past Bookings</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body ">
+        <table class="table table-bordered" style="font-size: 0.8rem;">
+          <thead>
+            <tr>
+                <th>No.</th>
+                <th>Patient</th>
+                <th>Date</th>
+                <th>From Time</th>
+                <th>To Time</th>
+                {% comment %} <th>Prescription</th> {% endcomment %}
+            </tr>
+          </thead>
+
+          <tbody>
+            {% comment %} {% if past_data %} {% endcomment %}
+
+
+            {% for p in past_data %}
+            <tr>
+                <td>{{ forloop.counter }}</td>
+                <td>{{ p.USER.name }}</td>
+                <td>{{ p.SCHEDULE.date }}</td>
+                <td>{{ p.SCHEDULE.fromtime }}</td>
+                <td>{{ p.SCHEDULE.totime }}</td>
+                {% comment %} <td><div align="center">
+            <a href="{% url 'doc_re_pres' p.id %}" class="btn btn-primary btn-sm">Add</a>
+        </div></td> {% endcomment %}
+            </tr>
+            {% endfor %}
+
+
+            {% comment %} {% else %}
+            <tr>
+                <td colspan="6" class="text-center">
+                    <h5><b>No Past Bookings Available</b></h5>
+                </td>
+            </tr>
+
+            {% endif %} {% endcomment %}
+        </tbody>
+
+
+        </table>
+      </div>
+    </div>
+      </div>
+
+</div>
+
+
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const modal = document.getElementById("viewRequestsModal");
+    const content = document.querySelector(".container-fluid");
+
+    modal.addEventListener("show.bs.modal", function () {
+      content.classList.add("blurred");
+    });
+
+    modal.addEventListener("hide.bs.modal", function () {
+      content.classList.remove("blurred");
+    });
+  });
+
+  function filterTable() {
+
+    const searchQuery = document.getElementById("searchInput").value.toLowerCase();
+    const table = document.querySelector(".table tbody");
+    const rows = table.getElementsByTagName("tr");
+    let noResults = true;
+
+    for (let i = 0; i < rows.length; i++) {
+      const cells = rows[i].getElementsByTagName("td");
+      let rowMatches = false;
+
+      if (cells[1] && cells[1].innerText.toLowerCase().includes(searchQuery)) {
+        rowMatches = true;
+        noResults = false;
+      }
+
+      rows[i].style.display = rowMatches ? "" : "none";
+    }
+
+    document.getElementById("noResultMessage").style.display = noResults ? "table-row" : "none";
+  }
+
+
+
+  // Example function to get the count of available data (you can replace it with actual logic
+
+</script>
+
+
+
+
+<!-- Include Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+
+{% endblock %}

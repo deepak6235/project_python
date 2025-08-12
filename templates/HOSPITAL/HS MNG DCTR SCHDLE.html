@@ -1,0 +1,43 @@
+{% extends 'HOSPITAL/hospital_data_view_temp.html' %}
+{% block body %}
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Untitled Document</title>
+</head>
+
+<body>
+<p>MANAGE DOCTOR SCHEDULE</p>
+<form id="form1" name="form1" method="post" action="">
+  <table class="table table-bordered table-striped">
+    <tr>
+
+        <td width="52">DATE</td>
+      <td width="96">FROM TIME </td>
+      <td width="76">TO TIME </td>
+
+    </tr>
+      {% for i in sch %}
+    <tr>
+
+      <td>{{ i.date }}</td>
+      <td>{{ i.fromtime }}</td>
+      <td>{{ i.totime }}</td>
+
+
+    </tr>
+      {% endfor %}
+  <tr>
+      <td colspan="4"><div align="center"><a href="/hs_add_dr_sc">Add New</a> </div> </td>
+     
+  </tr>
+  </table>
+</form>
+<p>&nbsp;</p>
+</body>
+</html>
+
+{% endblock %}

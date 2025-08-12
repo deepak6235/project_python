@@ -1,0 +1,93 @@
+{% extends 'HOSPITAL/hospital_data_view_temp.html' %}
+{% block body %}
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Untitled Document</title>
+    <style>
+input[type="checkbox"] {
+  display: inline-block !important; /* Ensure checkboxes are visible */
+  appearance: checkbox !important; /* Ensure the default checkbox style is applied */
+  width: auto !important;
+}
+</style>
+</head>
+
+<body>
+  <form action="/hs_add_dr_sc_post" method="post" enctype="multipart/form-data" name="form1" id="form1">
+    <div align="center">ADD SCHEDULE
+    </div>
+    <table class="table table-bordered table-striped">
+
+      <tr>
+        <td><div align="center">FROM DATE</div></td>
+        <td><div align="center">
+          <input type="date" name="fd" />
+        </div></td>
+      </tr>
+      <tr>
+        <td><div align="center">TO DATE</div></td>
+        <td><div align="center">
+          <input type="date" name="td" />
+        </div></td>
+      </tr>
+
+     <tr>
+        <td><div align="center">FROM TIME</div></td>
+        <td><div align="center">
+          <input type="time" name="ft" />
+        </div></td>
+     </tr>
+
+      <tr>
+        <td><div align="center">TO TIME</div></td>
+        <td><div align="center">
+          <input type="time" name="tt" />
+        </div></td>
+      </tr>
+
+      <tr>
+        <td><div align="center">DAYS</div></td>
+
+        <td><div align="center">
+            <input type="checkbox" name="day" value="Monday" />Monday
+            <input type="checkbox" name="day" value="Tuesday"/>Tuesday
+            <input type="checkbox" name="day" value="Wednesday"/>Wednesday
+            <input type="checkbox" name="day" value="Thursday"/>Thursday
+            <input type="checkbox" name="day" value="Friday"/>Friday
+            <input type="checkbox" name="day" value="Saturday"/>Saturday
+
+        </input>
+        </div>
+
+          </td>
+
+         </div>
+
+        </tr>
+
+      <tr>
+        <td colspan="2"><div align="center">
+          <input type="submit" name="Submit" value="ADD" />
+        </div></td>
+      </tr>
+    </table>
+  </form>
+</body>
+</html>
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+

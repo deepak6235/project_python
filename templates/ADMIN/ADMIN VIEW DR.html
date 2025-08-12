@@ -1,0 +1,149 @@
+
+
+
+{% extends 'admin/admin_data_view_temp.html'%}
+{% block body %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Doctor</title>
+    <!-- Bootstrap CSS for better design and responsiveness -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f4f7fc;
+            font-family: 'Arial', sans-serif;
+        }
+
+        h2 {
+            text-align: center;
+            font-size: 2rem;
+            color: #333;
+            font-weight: bold;
+            margin-bottom: 30px;
+        }
+
+        /* Table Styling */
+        .table {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .table th {
+            background-color: #333333;
+            color: white;
+            text-align: center;
+            font-size: 1.1rem;
+        }
+
+        .table td {
+            text-align: center;
+            padding: 15px;
+            vertical-align: middle;
+        }
+
+        .table td img {
+            border-radius: 50%;
+            max-width: 100px;
+            max-height: 100px;
+        }
+
+        /* Stripe table rows */
+        .table-striped tbody tr:nth-of-type(odd) {
+            background-color: #f9f9f9;
+        }
+
+        /* Hover effect on rows */
+        .table-hover tbody tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .table th, .table td {
+                font-size: 0.9rem;
+            }
+        }
+
+        /* Actions Button Styling */
+        .btn-edit, .btn-delete {
+            padding: 6px 12px;
+            font-size: 14px;
+            border-radius: 4px;
+        }
+
+        .btn-edit {
+            background-color: #007bff;
+            color: white;
+            border: none;
+        }
+
+        .btn-edit:hover {
+            background-color: #0056b3;
+        }
+
+        .btn-delete {
+            background-color: #dc3545;
+            color: white;
+            border: none;
+        }
+
+        .btn-delete:hover {
+            background-color: #c82333;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container mt-4">
+    <h2>Manage Doctors</h2>
+
+    <form id="form1" name="form1" method="post" action="" class="mb-4">
+        <!-- Optionally, you can add form elements like search, filters, etc. -->
+    </form>
+
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped table-hover">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Image</th>
+                    <th>Phone</th>
+                    <th>Department</th>
+                    <th>Qualification</th>
+                    <th>Experience</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                {% for i in data %}
+                <tr>
+                    <td>{{ i.name }}</td>
+                    <td>{{ i.email }}</td>
+                    <td><img src="{{ i.image.url }}" alt="Doctor Image"></td>
+                    <td>{{ i.phone }}</td>
+                    <td>{{ i.department }}</td>
+                    <td>{{ i.qualification }}</td>
+                    <td>{{ i.experience }}</td>
+
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- Bootstrap JS and dependencies -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>
+
+{% endblock %}

@@ -1,0 +1,418 @@
+
+
+
+<!--
+Author: W3layouts
+Author URL: http://w3layouts.com
+-->
+{#<!doctype html>#}
+<html lang="zxx">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="keywords"
+    content="Medick Responsive web template, Bootstrap Web Templates, Android Compatible web template, Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+  <title>Healthify</title>
+  <link href="//fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+  <!-- Template CSS -->
+  <link rel="stylesheet" href="/static/admin/Medick-Starter/assets/css/style-starter.css">
+</head>
+
+<body>
+  <div class="header-w3l">
+  <!--header-->
+  <header id="site-header" class="header-w3l fixed-top">
+    <div class="container">
+      <nav class="navbar navbar-expand-lg stroke">
+        <a class="navbar-brand" href="/admin_hm">
+         HEALTH<span class="sub-logo">i</span>FY</span>
+        </a>
+        <!-- if logo is image enable this
+            <a class="navbar-brand" href="#index.html">
+                <img src="image-path" alt="Your logo" title="Your logo" style="height:35px;" />
+            </a> -->
+        <button class="navbar-toggler  collapsed bg-gradient" type="button" data-toggle="collapse"
+          data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false"
+          aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon fa icon-expand fa-bars"></span>
+          <span class="navbar-toggler-icon fa icon-close fa-times"></span>
+          </span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+          <ul class="navbar-nav mx-lg-auto ">
+              <li class="nav-item ">
+              <a class="nav-link" href="/admin_hm">Home</a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="/admin_acpt_hs_doc#go">hospital</a>
+
+              <li class="nav-item">
+              <a class="nav-link" href="/admin_acpt_lab#go">Lab</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="/admin_view_complaints#go">Complaints</a>
+            </li>
+
+
+               <li class="nav-item">
+              <a class="nav-link" href="/">Logout</a>
+            </li>
+
+          </ul>
+
+        </div>
+        <!-- toggle switch for light and dark theme -->
+        <div class="mobile-position">
+          <nav class="navigation">
+            <div class="theme-switch-wrapper">
+              <label class="theme-switch" for="checkbox">
+                <input type="checkbox" id="checkbox">
+                <div class="mode-container">
+                  <i class="gg-sun"></i>
+                  <i class="gg-moon"></i>
+                </div>
+              </label>
+            </div>
+          </nav>
+        </div>
+        <!-- //toggle switch for light and dark theme -->
+      </nav>
+    </div>
+  </header>
+</div>
+  <style>
+      .coiner {
+
+
+    max-width: 1140px;
+  }
+  </style>
+  <!-- //header -->
+  <!--/w3l-banner-content-->
+  <div class="banner-w3l-main">
+<br><br><br><br><br><br>
+ <div class="container" style="max-width: 97%;">
+ <div class="box-wrap" >
+
+<div>
+     <body>
+  <div class="container-fluid">
+  <!-- Page Heading -->
+  <div class="text-center mb-3">
+    <h2>Accepted Hospitals</h2>
+  </div>
+
+  <style>
+    @media (prefers-color-scheme: dark) {
+      h2 {
+        color: #fff;
+      }
+    }
+
+    .bg-cr {
+  background: transparent;
+
+        backdrop-filter: blur(5px);
+
+}
+
+
+
+
+
+
+
+ .table-responsive {
+      max-height: 75vh;
+      overflow-y: auto;
+    }
+
+    .form-row {
+      gap: 10px;
+    }
+
+    .blurred {
+      filter: blur(5px);
+      transition: filter 0.3s ease-in-out;
+    }
+
+
+  </style>
+
+
+{#  </form>#}
+
+<div class="form-row justify-content-center mb-4">
+      <div class="col-md-6">
+        <input type="text" id="searchInput" placeholder="Search by hospital name" class="form-control" onkeyup="filterTable()" />
+      </div><div class="col-auto">
+        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#viewRequestsModal">
+          View Requests
+        </button>
+      </div>
+    </div>
+<br>
+
+
+
+
+
+
+
+
+  <!-- Table of Accepted Hospitals and Doctors -->
+<div class="table">
+      <table class="table table-bordered table-striped" style="font-size: 0.7rem;">
+        <thead class="thead-dark">
+          <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Website</th>
+            <th>Contact No</th>
+            <th>Place</th>
+            <th>PIN</th>
+            <th>Post</th>
+            <th>Latitude</th>
+            <th>Longitude</th>
+            <th>Doctor</th>
+            <th>Bookings</th>
+          </tr>
+        </thead>
+        <tbody>
+        {% if data %}
+
+          {% for i in data %}
+          <tr>
+            <td  class="text-center">   {{ i.name }}</td>
+            <td class="text-center">{{ i.email }}</td>
+            <td class="text-center">
+              <a href="https://{{ i.website}}" target="_blank" rel="noopener noreferrer">{{ i.website }}</a>
+            </td>
+            <td class="text-center">{{ i.contactno }}</td>
+            <td class="text-center">{{ i.place }}</td>
+            <td class="text-center">{{ i.pin }}</td>
+            <td class="text-center">{{ i.post }}</td>
+            <td class="text-center">{{ i.latitude }}</td>
+            <td class="text-center">{{ i.longitude }}</td>
+            <td class="text-center">
+              <a href="/admin_view_dctr/{{ i.id }}#go" class="btn btn-info btn-sm">Doctor</a>
+            </td>
+            <td class="text-center">
+              <a href="/admin_view_bookings/{{ i.id }}#go" class="btn btn-warning btn-sm">Bookings</a>
+            </td>
+
+          {% endfor %}
+        {% else %}
+            <tr>
+                <td colspan="11" align="center"><h5>No Hospitals Found</h5></td>
+            </tr>
+
+          {% endif %}
+        <tr id="noResultMessage" style="display: none;">
+              <td colspan="11" class="text-center"><h5>No Results Found</h5></td>
+          </tr>
+
+
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+
+
+  <!-- Modal -->
+
+{#  <div class="modal fade bg-color-white" id="viewRequestsModal" tabindex="-1" aria-labelledby="viewRequestsModalLabel"     >#}
+  <div class="modal fade bg-cr"   id="viewRequestsModal" tabindex="-1" aria-labelledby="viewRequestsModalLabel" aria-hidden="false" data-backdrop="false" >
+
+  <div class="modal-dialog modal-lg modal-dialog-centered"   style="max-width: 95%;" >  <!-- Increased width to 90% -->
+
+
+      <div class="modal-content "   >
+      <div class="modal-header">
+        <h5 class="modal-title" id="viewRequestsModalLabel">Pending Requests</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body ">
+        <table class="table table-bordered" style="font-size: 0.8rem;">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Website</th>
+              <th>Contact No</th>
+              <th>Place</th>
+              <th>PIN</th>
+              <th>Post</th>
+              <th>Latitude</th>
+              <th>Longitude</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+
+          <tbody>
+          {% if requests %}
+            {% for i in requests %}
+            <tr>
+              <td id="tdname">{{ i.name }}</td>
+              <td>{{ i.email }}</td>
+              <td><a href="{{ i.website }}" target="_blank">{{ i.website }}</a></td>
+              <td>{{ i.contactno }}</td>
+              <td>{{ i.place }}</td>
+              <td>{{ i.pin }}</td>
+              <td>{{ i.post }}</td>
+              <td>{{ i.latitude }}</td>
+              <td>{{ i.longitude }}</td>
+              <td>
+                <a href="admin_accept_hsptl/{{ i.LOGIN.id }}" class="btn btn-success btn-sm"><h6>Accept</h6></a>&nbsp;&nbsp;
+                <a href="admin_reject_hs/{{ i.LOGIN.id }}" class="btn btn-danger btn-sm"><h6>Reject</h6></a>
+              </td>
+
+            </tr>
+              {% endfor %}
+                {% else %}
+                <tr>
+                <td colspan="10" align="center"> No Request Found</td>
+                </tr>
+
+
+          {% endif %}
+          </tbody>
+
+
+        </table>
+      </div>
+    </div>
+      </div>
+
+</div>
+
+
+  <!-- Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</div>
+
+  </div>
+ </div>
+  <br><br><br><br><br><br><br><br>
+ </div>
+
+  </div>
+
+
+
+  <script src="/static/admin/Medick-Starter/assets/js/jquery-3.3.1.min.js"></script>
+  <script src="/static/admin/Medick-Starter/assets/js/theme-change.js"></script>
+  <!-- owl carousel -->
+  <script src="/static/admin/Medick-Starter/assets/js/owl.carousel.js"></script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const modal = document.getElementById("viewRequestsModal");
+      const content = document.querySelector(".container-fluid");
+
+      modal.addEventListener("show.bs.modal", function () {
+        content.classList.add("blurred");
+      });
+
+      modal.addEventListener("hide.bs.modal", function () {
+        content.classList.remove("blurred");
+      });
+    });
+
+    function filterTable() {
+
+      const searchQuery = document.getElementById("searchInput").value.toLowerCase();
+      const table = document.querySelector(".table tbody");
+      const rows = table.getElementsByTagName("tr");
+      let noResults = true;
+
+      for (let i = 0; i < rows.length; i++) {
+        const cells = rows[i].getElementsByTagName("td");
+        let rowMatches = false;
+
+        if (cells[0] && cells[0].innerText.toLowerCase().includes(searchQuery)) {
+          rowMatches = true;
+          noResults = false;
+        }
+
+        rows[i].style.display = rowMatches ? "" : "none";
+      }
+
+      document.getElementById("noResultMessage").style.display = noResults ? "table-row" : "none";
+    }
+
+
+
+    // Example function to get the count of available data (you can replace it with actual logic
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+  <!-- script for tesimonials carousel slider -->
+  <script>
+    $(document).ready(function () {
+      $("#owl-demo2").owlCarousel({
+        loop: true,
+        nav: false,
+        margin: 50,
+        responsiveClass: true,
+        responsive: {
+          0: {
+            items: 1,
+            nav: false
+          },
+          736: {
+            items: 1,
+            nav: false
+          },
+          991: {
+            items: 2,
+            margin: 30,
+            nav: false
+          },
+          1080: {
+            items: 3,
+            nav: false
+          }
+        }
+      })
+    })
+  </script>
+  <!-- //script for tesimonials carousel slider -->
+  <!-- stats number counter-->
+  <script src="/static/admin/Medick-Starter/assets/js/jquery.waypoints.min.js"></script>
+  <script src="/static/admin/Medick-Starter/assets/js/jquery.countup.js"></script>
+
+  <!-- disable body scroll which navbar is in active -->
+
+  <!--/MENU-JS-->
+
+  <!--//MENU-JS-->
+
+
+  <script src="/static/admin/Medick-Starter/assets/js/bootstrap.min.js"></script>
+
+</body>
+
+</html>

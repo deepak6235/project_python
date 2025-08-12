@@ -1,0 +1,433 @@
+{% extends 'DOCTOR/doctorindex.html' %}
+{% block body %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bookings</title>
+    <!-- Include Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+     <body>
+  <div class="container-fluid">
+  <!-- Page Heading -->
+  <div class="text-center ">
+  
+  </div>
+
+  <style>
+    @media (prefers-color-scheme: dark) {
+      h2 {
+        color: #fff;
+      }
+    }
+
+    .bg-cr {
+  background: transparent;
+
+        backdrop-filter: blur(5px);
+
+}
+
+
+
+
+
+
+
+ .table-responsive {
+      max-height: 75vh;
+      overflow-y: auto;
+    }
+
+    .form-row {
+      gap: 10px;
+    }
+
+    .blurred {
+      filter: blur(5px);
+      transition: filter 0.3s ease-in-out;
+    }
+
+
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f9f9f9;
+        color: #333;
+    }
+
+    .form-title {
+        font-size: 28px;
+        text-align: center;
+        margin-bottom: 20px;
+        color: #333;
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    /* Table Styling */
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 20px;
+    }
+
+    th, td {
+        padding: 12px;
+        text-align: left;
+        font-size: 16px;
+        border: 1px solid #ddd;
+    }
+
+    th {
+        background-color: #333333;
+        color: white;
+        font-weight: bold;
+    }
+
+    /* Input and Select Styling */
+    td input, td select {
+        width: 100%;
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+        font-size: 14px;
+    }
+
+    td select {
+        cursor: pointer;
+    }
+
+    /* Add Button Styling */
+    .add-btn {
+        font-size: 30px;
+        cursor: pointer;
+        color: #000000;
+        font-weight: bold;
+        padding: 8px;
+        margin-left: 10px;
+        text-decoration: none;
+    }
+
+
+    .delete-btn {
+        font-size: 40px;
+        cursor: pointer;
+        color: #000000;
+        font-weight: bold;
+        padding: 8px;
+        margin-left: 10px;
+        text-decoration: none;
+    }
+
+
+    .add-btn:hover {
+        color: #d9534f;
+    }
+
+    .delete-btn:hover {
+        color: #d9534f;
+    }
+    /* Submit Button Styling */
+    .submit-btn {
+        padding: 12px 20px;
+        font-size: 16px;
+        color: white;
+        background-color: #4CAF50;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    .submit-btn:hover {
+        background-color: #45a049;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+        .container {
+            width: 95%;
+            padding: 15px;
+        }
+
+        th, td {
+            font-size: 14px;
+        }
+
+        .form-title {
+            font-size: 24px;
+        }
+
+        .submit-btn {
+            width: 100%;
+        }
+
+.bg-crr {
+background: transparent;
+
+    backdrop-filter: blur(5px);
+
+}
+
+
+
+
+
+
+
+.table-responsive {
+  max-height: 75vh;
+  overflow-y: auto;
+}
+
+.form-row {
+  gap: 10px;
+}
+
+.blurred {
+  filter: blur(5px);
+  transition: filter 0.3s ease-in-out;
+}
+
+    }
+
+
+
+  </style>
+  <script>
+    let rowIndex = 0; // Initialize row index
+
+    function addNewMedicineRow() {
+        const table = document.getElementById("medicineTable");
+        const newRow = table.insertRow(-1);
+        rowIndex++;
+
+        const cell1 = newRow.insertCell(0);
+        const cell2 = newRow.insertCell(1);
+        const cell3 = newRow.insertCell(2);
+        const cell4 = newRow.insertCell(3);
+        const cell5 = newRow.insertCell(4);
+        const cell6 = newRow.insertCell(5);
+        const cell7 = newRow.insertCell(6);
+
+        cell1.innerHTML = `<input type="text" name="medicine_name_${rowIndex}" placeholder="Insert Medicine name" required aria-label="Medicine Name">`;
+        cell2.innerHTML = `
+            <select name="days_${rowIndex}" required aria-label="Days">
+                <option value="" selected>Select One</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+            </select>`;
+        cell3.innerHTML = `
+            <select name="quantity_${rowIndex}" required aria-label="Quantity">
+                <option value="" selected>Select One</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+            </select>`;
+        cell4.innerHTML = `
+            <select name="morning_${rowIndex}" required aria-label="Morning Schedule">
+                <option value="" selected>Select One</option>
+                <option value="before meal">Before meal</option>
+                <option value="after meal">After meal</option>
+                <option value="none">None</option>
+                <option value="any">Any</option>
+            </select>`;
+        cell5.innerHTML = `
+            <select name="afternoon_${rowIndex}" required aria-label="Afternoon Schedule">
+                <option value="" selected>Select One</option>
+                <option value="before meal">Before meal</option>
+                <option value="after meal">After meal</option>
+                <option value="none">None</option>
+                <option value="any">Any</option>
+            </select>`;
+        cell6.innerHTML = `
+            <select name="night_${rowIndex}" required aria-label="Night Schedule">
+                <option value="" selected>Select One</option>
+                <option value="before meal">Before meal</option>
+                <option value="after meal">After meal</option>
+                <option value="none">None</option>
+                <option value="any">Any</option>
+            </select>`;
+        cell7.innerHTML = `<a href="javascript:void(0);" class="delete-btn" onclick="deleteRow(this)">-</a>`;
+    }
+
+    function deleteRow(button) {
+        const row = button.parentNode.parentNode;
+        row.parentNode.removeChild(row);
+    }
+</script>
+
+{#  </form>#}
+
+
+{%if data%}
+
+
+<div class="d-flex justify-content-end mb-40">
+    <button type="button"
+            class="btn btn-info"
+            data-toggle="modal"
+            data-target="#viewRequestsModal"
+    >
+
+
+ Past Visits
+    </button>
+</div>
+{%else%}
+
+{%endif%}
+
+
+
+
+  <!-- Table of Accepted Hospitals and Doctors -->
+  <form id="form1" name="form1" method="post" action="/doc_add_pre">
+    {% csrf_token %}
+    <div class="form-title">Add New Medicine</div>
+    
+    <table id="medicineTable">
+        <thead class="thead-dark">
+            <tr>
+                <th>Name of Medicine</th>
+                <th>How many days</th>
+                <th>Qty per time</th>
+                <th>Morning</th>
+                <th>Afternoon</th>
+                <th>Night</th>
+                <th>Add</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><input type="text" name="medicine_name_0" placeholder="Insert Medicine name" required aria-label="Medicine Name"></td>
+                <td>
+                    <select name="days_0" required aria-label="Days">
+                        <option value="" selected>Select One</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+                </td>
+                <td>
+                    <select name="quantity_0" required aria-label="Quantity">
+                        <option value="" selected>Select One</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+                </td>
+                <td>
+                    <select name="morning_0" required aria-label="Morning Schedule">
+                        <option value="" selected>Select One</option>
+                        <option value="before meal">Before meal</option>
+                        <option value="after meal">After meal</option>
+                        <option value="none">None</option>
+                        <option value="any">Any</option>
+                    </select>
+                </td>
+                <td>
+                    <select name="afternoon_0" required aria-label="Afternoon Schedule">
+                        <option value="" selected>Select One</option>
+                        <option value="before meal">Before meal</option>
+                        <option value="after meal">After meal</option>
+                        <option value="none">None</option>
+                        <option value="any">Any</option>
+                    </select>
+                </td>
+                <td>
+                    <select name="night_0" required aria-label="Night Schedule">
+                        <option value="" selected>Select One</option>
+                        <option value="before meal">Before meal</option>
+                        <option value="after meal">After meal</option>
+                        <option value="none">None</option>
+                        <option value="any">Any</option>
+                    </select>
+                </td>
+                <td><a class="add-btn" onclick="addNewMedicineRow()">+</a></td>
+            </tr>
+        </tbody>
+    </table>
+    <div align="center">
+        <button type="submit" class="submit-btn">Add</button>
+    </div>
+</form>
+
+  <!-- Modal -->
+
+{#  <div class="modal fade bg-color-white" id="viewRequestsModal" tabindex="-1" aria-labelledby="viewRequestsModalLabel"     >#}
+  <div class="modal fade bg-cr"   id="viewRequestsModal" tabindex="-1" aria-labelledby="viewRequestsModalLabel" aria-hidden="false" data-backdrop="false" >
+
+  <div class="modal-dialog modal-lg modal-dialog-centered"   style="max-width: 85%;" >  <!-- Increased width to 90% -->
+
+
+      <div class="modal-content "   >
+      <div class="modal-header">
+        <h5 class="modal-title" id="viewRequestsModalLabel">Past Bookings</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body ">
+        <table class="table table-bordered" style="font-size: 0.8rem;">
+            <thead>
+                <tr>
+                  <th>Date</th>
+                                    <th>From Time</th>
+                                    <th>To Time</th>
+                                    <th>Prescription</th>
+                </tr>
+              </thead>
+
+              <tbody>
+                {% if data %}
+                  {% for i in data %}
+                  <tr>
+                    <td>{{ i.SCHEDULE.date }}</td>
+                      <td>{{ i.SCHEDULE.fromtime }}</td>
+                      <td>{{ i.SCHEDULE.totime }}</td>
+                      <td class="text-center">
+            
+                    <a href="{% url 'doc_view_past_pres' i.id %}" class="btn btn-success btn-sm">View</a>
+
+                  </td>
+                  </tr>
+                    {% endfor %}
+                      {% else %}
+                      <tr>
+                      <td colspan="4" align="center"> No Past Bookings Found</td>
+                      </tr>
+      
+      
+                {% endif %}
+                </tbody>
+
+        </table>
+      </div>
+    </div>
+      </div>
+
+</div>
+
+<!-- Include Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+
+{% endblock %}

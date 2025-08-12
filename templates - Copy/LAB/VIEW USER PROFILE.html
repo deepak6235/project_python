@@ -1,0 +1,66 @@
+{% extends 'LAB/labindex.html' %}
+{% block body %}
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Untitled Document</title>
+</head>
+
+<body>
+<p align="center">USER PROFILE</p>
+<form id="form1" name="form1" method="post" action="">
+
+  <div align="center">
+    <div align="center">
+
+      <table class="table table-bordered table-striped">
+
+          {% for i in data %}
+
+        <tr>
+          <td><div align="center">NAME</div></td>
+          <td><div align="center">{{ i.name }}
+
+          </div></td>
+        </tr>
+          <tr>
+      <td><div align="center">EMAIL</div></td>
+      <td><div align="center">{{ i.email }}
+
+      </div></td>
+    </tr>
+
+          <tr>
+      <td><div align="center">PHONE</div></td>
+      <td><div align="center">{{ i.phone }}
+
+      </div></td>
+    </tr>
+<tr>
+      <td><div align="center">PLACE</div></td>
+      <td><div align="center">{{ i.place }}
+
+      </div></td>
+    </tr>
+
+
+
+
+
+{% endfor %}
+
+
+      </table>
+
+    </div>
+    <p></p>
+  </div>
+</form>
+<div align="center"></div>
+</body>
+</html>
+{% endblock %}

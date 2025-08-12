@@ -1,0 +1,66 @@
+
+
+{% extends 'LAB/labindex.html' %}
+{% block body %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Patient Details</title>
+</head>
+<body>
+  <div class="container mt-5">
+    <div align="center">
+      <h2>PATIENT DETAILS</h2>
+    </div>
+
+
+    <form id="form1" name="form1" method="post" action="/lab_add_user_search#go">
+       {% csrf_token %}
+      <div class="form-row justify-content-center mb-4">
+        <div class="col-md-6">
+          <input type="text" name="n1" placeholder="Search by name" class="form-control" required />
+        </div>
+        <div class="col-auto">
+          <button type="submit" class="btn btn-success">Search</button>
+        </div>
+      </div>
+    </form>
+
+    
+    <table class="table table-bordered table-striped">
+      <thead>
+        <tr>
+          <th>NAME</th>
+          <th>EMAIL</th>
+          <th>PLACE</th>
+          <th>DOB</th>
+          <th>PHONE</th>
+          <th>ACTIONS</th>
+        </tr>
+      </thead>
+      <tbody>
+
+
+          {% for i in data %}
+            <tr>
+              <td>{{ i.name }}</td>
+              <td>{{ i.email }}</td>
+              <td>{{ i.place }}</td>
+              <td>{{ i.dob }}</td>
+              <td>{{ i.phone }}</td>
+              <td class="text-center">
+                <a href="lad_add_user/{{ i.id }}" class="btn btn-success btn-sm">Add</a>
+              </td>
+            </tr>
+          {% endfor %}
+
+
+      </tbody>
+    </table>
+  </div>
+</body>
+</html>
+
+{% endblock %}

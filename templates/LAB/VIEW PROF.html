@@ -1,0 +1,95 @@
+{% extends 'LAB/labindex.html' %}
+{% block body %}
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Untitled Document</title>
+</head>
+
+<body>
+<p align="center">VIEW PROFILE</p>
+<form id="form1" name="form1" method="post" action="">
+
+  <div align="center">
+    <div align="center">
+
+      <table class="table table-bordered table-striped">
+        <tr>
+          <td><div align="center">NAME</div></td>
+          <td><div align="center">{{ data.name }}
+
+          </div></td>
+        </tr>
+          <tr>
+      <td><div align="center">EMAIL</div></td>
+      <td><div align="center">{{ data.email }}
+
+      </div></td>
+    </tr>
+
+          <tr>
+      <td><div align="center">WEBSITE</div></td>
+      <td><div align="center">{{ data.website }}
+
+      </div></td>
+    </tr>
+          <tr>
+      <td><div align="center">CONTACT NO.</div></td>
+      <td><div align="center">{{ data.contactno }}
+
+      </div></td>
+    </tr>
+
+
+        <tr>
+          <td><div align="center">PLACE</div></td>
+          <td><div align="center">{{ data.place }}</div></td>
+        </tr>
+
+          <tr>
+      <td><div align="center">PIN</div></td>
+      <td><div align="center">{{ data.pin }}</div></td></tr>
+
+        <tr><td><div align="center">POST</div></td>
+            <td><div align="center">{{ data.post }}</div></td>
+        </tr>
+
+
+          <tr><td><div align="center">LATITUDE</div></td>
+            <td><div align="center">{{ data.latitude }}</div></td>
+        </tr>
+
+          <tr><td><div align="center">LONGITUDE</div></td>
+            <td><div align="center">{{ data.longitude }}</div></td>
+        </tr>
+
+
+
+
+
+
+
+
+
+
+
+          <tr>
+      <td><div align="center"><a href="/labeditprf#go">EDIT PROFILE</a></div></td>
+    </tr>
+
+
+
+      </table>
+
+    </div>
+    <p></p>
+  </div>
+</form>
+<div align="center"></div>
+</body>
+</html>
+{% endblock %}

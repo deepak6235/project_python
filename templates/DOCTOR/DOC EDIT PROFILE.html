@@ -1,0 +1,112 @@
+{% extends 'DOCTOR/doctorindex.html' %}
+{% block body %}
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Untitled Document</title>
+</head>
+
+<body>
+<p align="center">EDIT PROFILE</p>
+<form id="form1" name="form1" method="post" action="doc_editprof">
+<input type="hidden" name="id" value="{{ i.id }}">
+  <div align="center">
+    <div align="center">
+      <table class="table table-bordered table-striped">
+        <tr>
+          <td><div align="center">NAME</div></td>
+          <td><div align="center">
+              <input type="text" name="textfield" value="{{ i.name }}" />
+          </div></td>
+        </tr>
+          <tr>
+      <td><div align="center">EMAIL</div></td>
+      <td><div align="center">
+        <input type="text" name="textfield2" value="{{ i.email }}"/>
+      </div></td>
+    </tr>
+
+          <tr>
+      <td><div align="center">IMAGE</div></td>
+      <td><div align="center">
+        <input type="file" name="image" />
+
+          <img src="{{ i.image.url }}" width="100" height="100"> </div></td></tr>
+          <tr>
+      <td><div align="center">PHONE</div></td>
+      <td><div align="center">
+        <input type="text" name="textfield4" value="{{ i.phone }}"/>
+      </div></td>
+    </tr>
+{#          <tr>#}
+{#      <td><div align="center">DEPARTMENT</div></td>#}
+{#      <td><select name="textfield5" id="textfield5">#}
+{#          <option name="textfield5">ENT</option>#}
+{#          <option name="textfield5">Brain</option>#}
+{#          <option name="textfield5">Ortho</option>#}
+{#          <option name="textfield5">Lungs</option>#}
+{#          <option name="textfield5">Kidney</option>#}
+{#      </select></td>#}
+{#    </tr>#}
+{#        <tr>#}
+{#          <td><div align="center">QUALIFICATION</div></td>#}
+{#          <td><div align="center">#}
+{#              <input type="text" name="textfield6" value="{{ i.qualification }}" readonly/>#}
+{#          </div></td>#}
+{#        </tr>#}
+          <tr>
+      <td><div align="center">EXPERIENCE</div></td>
+      <td><div align="center">
+        <input type="text" name="textfield7" value="{{ i.experience }}" readonly/>
+      </div></td>
+    </tr>
+{#        <tr>#}
+{#          <td><div align="center">HOSPITAL</div></td>#}
+{#            <td><select name="textfield5" id="textfield5">#}
+{#                {% for a in j %}#}
+{#                    <option value="{{ a.id }}"> {{ a.name }}</option>#}
+{#                {% endfor %}#}
+{#            </select>#}
+{#            </td>#}
+{#        </tr>#}
+{#        <tr>#}
+{#          <td><div align="center">SCHEDULE</div></td>#}
+{#          <td><div align="center"><a href="#">VIEW</a></div></td>#}
+{#        </tr>#}
+
+{##}
+{#           <tr>#}
+{#      <td><div align="center">USERNAME</div></td>#}
+{#      <td><div align="center">#}
+{#        <input type="text" name="textfield8" value="{{ i.LOGIN.username }}"/>#}
+{#      </div></td>#}
+{#    </tr>#}
+
+
+{#    <tr>#}
+{#      <td><div align="center">PASSWORD</div></td>#}
+{#      <td><div align="center">#}
+{#        <input type="text" name="textfield9"/>#}
+{#      </div></td>#}
+{#    </tr>#}
+
+           <tr>
+      <td colspan="2"><div align="center">
+        <input type="submit" name="Submit"  value="UPDATE"  />
+      </div></td>
+    </tr>
+
+      </table>
+    </div>
+    <p></p>
+  </div>
+</form>
+<div align="center"></div>
+</body>
+</html>
+
+{% endblock %}
